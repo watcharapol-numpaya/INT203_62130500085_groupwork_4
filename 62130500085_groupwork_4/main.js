@@ -2,8 +2,11 @@ const app = {
     data() {
         return {
             search: '',
-            blockSearch: false
-            ,
+            iconSearch: true,
+            blockCancel: false,
+            blockInput: false,
+            poppic: false,
+            closepop: true,
             tasks: [{
                     title: 'Shiba inu',
                     src: 'https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/26114711/Shiba-Inu-standing-in-profile-outdoors.jpg',
@@ -42,24 +45,38 @@ const app = {
 
     methods: {
         toggleShow(index) {
-            this.query[index].showdetail = !this.query[index].showdetail
+         //  this.query[index].showdetail = !this.query[index].showdetail
+            this.query[index].hide = !this.query[index].hide
         },
         toggleLike(index) {
             this.query[index].lovebold = !this.query[index].lovebold
             this.query[index].lovebor = !this.query[index].lovebor
-        },
-        togleSearch(){
-          this.query[index].blockSearch  =  !this.query[index].blockSearch
 
-        }
+
+
+        },
+        toggleSearch() {
+            this.blockInput = !this.blockInput;
+            this.iconSearch = !this.iconSearch;
+            this.blockCancel = !this.blockCancel;
+
+            if (this.search) {
+                this.search = '';
+            }
+
+
+        },
+
+
 
     },
     computed: {
         countLove() {
             return this.tasks.filter(t => t.lovebold).length
         },
-        query(){
-            return this.tasks.filter(q=> {
+        query() {
+            return this.tasks.filter(q => {
+
                 return q.title.toLowerCase().includes(this.search.toLowerCase())
 
             })

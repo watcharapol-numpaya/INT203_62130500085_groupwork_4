@@ -45,7 +45,7 @@
           <p class="mx-auto font-bold text-3xl">Dog Gallery <p>
         </div>
 
-        <div class="border flex   ">
+        <div class="  flex   ">
           <div class="flex text-lg font-bold text-pink-500 mt-4 ml-10 ">
             <span class="material-icons mx-2">
               favorite
@@ -56,15 +56,19 @@
 
 
 
-              <div class="flex ">
-                <input v-model="search" placeholder="search" class="p-2 bg-white rounded border-2 border-blue-300"  v-show="" />
-                <button class=" focus:outline-none" >
+              <div class="flex space-x-2  lg:mx-52">
+                <input v-model.lazy="search" placeholder="search"
+                  class="text-black  p-2 bg-white rounded border-2 border-blue-300" v-show="blockInput" />
+
+                <button class=" focus:outline-none text-black" v-on:click="toggleSearch()" v-show="iconSearch">
                   <i class="material-icons  ">
                     search
                   </i>
                 </button>
 
-                <button class="border p-2 bg-red-600 rounded-full focus:outline-none ">
+
+                <button class="border-2 p-2 bg-red-600 rounded-full focus:outline-none text-black "
+                  v-on:click="toggleSearch()" v-show="blockCancel">
                   cancel
                 </button>
               </div>
@@ -79,7 +83,7 @@
 
         <div class="p-6 text-grey-darker text-center flex flex-col  ">
 
-          <li v-for="(task,index) in query" class="list-none  ">
+          <li v-for="(task,index) in query" class="list-none " v-if="query.length > 0">
 
             <div class="text-grey-darker text-lg font-medium flex justify-center ">
               {{task.title}}
@@ -96,21 +100,41 @@
               </button>
             </div>
 
-            <img v-bind:src="task.src" v-on:click="toggleShow(index)"
-              class="w-64 flex self-center rounded-full shadow-lg mb-6 b-10 border-yellow-400 border-8 m-4  mx-auto transform hover:scale-110">
+
+            <img v-bind:src="task.src" v-on:click="toggleShow(index) "
+              class="cursor-pointer w-64 flex self-center rounded-full shadow-lg mb-6 b-10 border-yellow-400 border-8 m-4  mx-auto transform hover:scale-110 "
+              v-show="!task.hide">
 
 
-            <div class="flex ml-5 " v-show="task.showdetail  ">
+            <div class="bg-black p-20 flex border" v-show="task.hide" >
+
+              <img v-bind:src="task.src" class="bg-black mx-auto scale-110" v-show="task.hide"  >
+
+              <div>
+                <i class="material-icons text-white text-3xl cursor-pointer" v-on:click="toggleShow(index)"  >
+                  highlight_off
+                </i>.
+              </div>
+
+            </div>
+
+
+            <!-- <div class="flex ml-5 " v-show="task.showdetail  ">
               <p class="text-grey-darker mx-auto mb-4 bg-yellow-100 rounded-full transform hover:scale-105">
                 {{task.detail}}
               </p>
 
 
-            </div>
+            </div> -->
 
 
 
           </li>
+
+          <div v-else>
+            <h1 class="text-xl">Not found</h1>
+          </div>
+
         </div>
 
       </div>
