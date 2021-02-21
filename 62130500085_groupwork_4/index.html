@@ -36,10 +36,10 @@
 
 </head>
 
-<body>
-  <div id="app">
-    <div class="  py-8 w-full flex justify-center items-center bg-yellow-200  ">
-      <div class="  rounded w-4/6 shadow     bg-yellow-500    ">
+<body  >
+  <div id="app"  >
+    <div class="  py-8 w-full   flex justify-center items-center bg-yellow-200 ">
+      <div class="  rounded w-4/6 shadow  bg-yellow-500   ">
 
         <div class="flex flex-row justify-between uppercase font-bold text-blue-dark border-b-2 p-6  bg-yellow-700">
           <p class="mx-auto font-bold text-3xl">Dog Gallery <p>
@@ -83,7 +83,7 @@
 
         <div class="p-6 text-grey-darker text-center flex flex-col  ">
 
-          <li v-for="(task,index) in query" class="list-none " v-if="query.length > 0">
+          <li v-for="(task,index) in query" class="list-none   " v-if="query.length > 0">
 
             <div class="text-grey-darker text-lg font-medium flex justify-center ">
               {{task.title}}
@@ -106,12 +106,12 @@
               v-show="!task.hide">
 
 
-            <div class="bg-black p-20 flex border" v-show="task.hide" >
+            <div class="bg-black p-8 flex border mb-10 mt-2" v-show="task.hide">
 
-              <img v-bind:src="task.src" class="bg-black mx-auto scale-110" v-show="task.hide"  >
+              <img v-bind:src="task.src" class="bg-black mx-auto  " v-show="task.hide" width="500">
 
               <div>
-                <i class="material-icons text-white text-3xl cursor-pointer" v-on:click="toggleShow(index)"  >
+                <i class="material-icons text-white text-3xl cursor-pointer" v-on:click="toggleShow(index)">
                   highlight_off
                 </i>.
               </div>
@@ -132,7 +132,8 @@
           </li>
 
           <div v-else>
-            <h1 class="text-xl">Not found</h1>
+            <h1 class="text-xl">No
+              photo.</h1>
           </div>
 
         </div>
