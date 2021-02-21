@@ -36,14 +36,15 @@
 
 </head>
 
-<body  >
-  <div id="app"  >
-    <div class="  py-8 w-full   flex justify-center items-center bg-yellow-200 ">
+<body class=" bg-yellow-200">
+  <div id="app">
+    <div class="  py-8 w-full   flex justify-center items-center  ">
       <div class="  rounded w-4/6 shadow  bg-yellow-500   ">
 
         <div class="flex flex-row justify-between uppercase font-bold text-blue-dark border-b-2 p-6  bg-yellow-700">
           <p class="mx-auto font-bold text-3xl">Dog Gallery <p>
         </div>
+
 
         <div class="  flex   ">
           <div class="flex text-lg font-bold text-pink-500 mt-4 ml-10 ">
@@ -89,11 +90,11 @@
               {{task.title}}
               <button class=" focus:outline-none text-pink-500 " v-on:click="toggleLike(index)">
 
-                <i class="material-icons ml-2  transform hover:scale-125 " v-show="task.lovebor">
+                <i class="material-icons ml-2  transform hover:scale-125 " v-show="!task.like">
                   favorite_border
                 </i>
 
-                <i class="material-icons ml-2 transform hover:scale-125" v-show="task.lovebold">
+                <i class="material-icons ml-2 transform hover:scale-125" v-show="task.like">
                   favorite
                 </i>
 
